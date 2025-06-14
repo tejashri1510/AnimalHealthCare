@@ -1,0 +1,87 @@
+.container {
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #57626d;
+  min-height: 80vh;
+}
+
+.heading {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #2e4053;
+  position: relative;
+}
+
+.heading::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, #2e86de, #00c9a7);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.button {
+  background-color: #2e86de;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background-color: #1b4f72;
+}
+
+.animalList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 10px 20px;
+}
+
+.animalCard {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  transition: transform 0.3s ease;
+  position: relative;
+  border-left: 6px solid #0079c9;
+}
+
+.animalCard:hover {
+  transform: translateY(-6px);
+}
+
+.animalCard p {
+  margin: 8px 0;
+  color: #333;
+}
+
+.editBtn {
+  margin-top: 10px;
+  background-color: #0075c9;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.editBtn:hover {
+  background-color: #00058b;
+}

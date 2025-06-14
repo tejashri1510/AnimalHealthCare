@@ -1,0 +1,96 @@
+@import "../var.css";
+
+.homepageContainer {
+    margin-top: 2px ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 5rem;
+  color: var(--color-text);
+  min-height: 90vh;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.homepageContent {
+  max-width: 600px;
+}
+
+.homepageContent h1 {
+  font-family: var(--font-roboto);
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+.homepageContent p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: var(--color-text);
+}
+
+.homepageButton {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  font-size: 1.2rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+}
+
+.homepageButton:hover {
+  background-color: var(--color-secondary);
+}
+
+.homepageImage {
+  flex: 1;
+  max-width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px; /* Needed for 3D effect */
+}
+
+.homepageImage img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  animation: floatAnimation 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+/* Subtle floating animation */
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg);
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1));
+  }
+  50% {
+    transform: translateY(-15px) rotateX(3deg) rotateY(5deg);
+    filter: drop-shadow(0 20px 20px rgba(0,0,0,0.15));
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .homepageContainer {
+    flex-direction: column;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .homepageContent {
+    max-width: 100%;
+  }
+
+  .homepageImage {
+    max-width: 300px;
+    margin-top: 2rem;
+  }
+}

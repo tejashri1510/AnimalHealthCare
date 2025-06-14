@@ -1,0 +1,41 @@
+/* src/components/VetReplies.module.css */
+
+.container {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.heading {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.replyCard {
+  background-color: #f7f9fc;
+  border-left: 6px solid #28a745;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+}
+
+.replyText {
+  color: #155724;
+}
+
+.pending {
+  color: #ffc107;
+}
+
+.timestamp {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 8px;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}

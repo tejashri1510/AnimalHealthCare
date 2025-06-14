@@ -1,0 +1,25 @@
+.container {
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.heading {
+  font-size: 2rem;
+  text-align: center;
+  color: #2d3436;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.emptyText {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #636e72;
+}

@@ -1,0 +1,85 @@
+.container {
+  padding: 2rem;
+  background-color: #4a4b4d; /* light gray background */
+  min-height: 100vh;
+  color: #000; /* black text */
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #fbf7f7;
+}
+
+.emptyMessage {
+  text-align: center;
+  color: #555;
+  font-size: 1.1rem;
+  margin-top: 3rem;
+}
+
+.consultationCard {
+  background-color: #ffffff;
+  color: #000;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.consultationCard:hover {
+  transform: translateY(-4px);
+}
+
+.avatar {
+  background-color: #dcdcdc;
+  color: #333;
+  font-weight: bold;
+  font-size: 1.5rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.details {
+  flex-grow: 1;
+}
+
+.timestamp {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+
+.reply {
+  background-color: #e6ffe6;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  border-left: 4px solid #4caf50;
+  border-radius: 6px;
+}
+
+.replyButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.replyButton:hover {
+  background-color: #0056b3;
+}

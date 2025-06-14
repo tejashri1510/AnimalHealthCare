@@ -1,0 +1,64 @@
+.page {
+  padding: 30px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #505860;
+  min-height: 80vh;
+}
+
+.header {
+  font-size: 34px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #2e86de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.icon {
+  color: #2e86de;
+  width: 34px;
+  height: 34px;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .sections {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.askBox, .repliesBox {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  flex: 1;
+}
+
+.askBox {
+  margin-bottom: 20px;
+}
+
+.subheading {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconSmall {
+  color: #333;
+  width: 22px;
+  height: 22px;
+}

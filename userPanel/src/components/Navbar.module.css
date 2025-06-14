@@ -1,0 +1,106 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #5b7498;
+  padding: 10px 20px;
+  color: white;
+  position: relative;
+  z-index: 999;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  color: white;
+}
+
+.menuItems {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menuItems li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.profile {
+  position: relative;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.profileIcon {
+  color: white;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  background-color: white;
+  color: black;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.dropdown a,
+.dropdown button {
+  display: block;
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dropdown a:hover,
+.dropdown button:hover {
+  background-color: #f1f1f1;
+}
+
+/* Responsive: Show hamburger menu and hide nav links */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    z-index: 1001;
+  }
+
+  .menuItems {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    background-color: #0d6efd;
+    padding: 10px 0;
+    text-align: center;
+    z-index: 999;
+  }
+
+  .menuItems.active {
+    display: flex;
+  }
+
+  .menuItems li {
+    padding: 10px 0;
+  }
+}

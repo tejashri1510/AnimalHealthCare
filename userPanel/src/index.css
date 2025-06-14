@@ -1,0 +1,61 @@
+
+@import './var.css';  
+
+* {
+  margin: 3px  ;
+  padding: 3px ;
+  box-sizing: border-box;
+  font-family: "outfit",Arial, Helvetica, sans-serif;
+
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  color: var(--color-text);
+  font-family: var(--font-roboto);
+  
+}
+
+body {
+  min-height: 100vh;
+  background-color: lightslategrey;
+ 
+  color: var(--color-text);
+  line-height: 1.5;
+
+ 
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Optional: Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 4px;
+}

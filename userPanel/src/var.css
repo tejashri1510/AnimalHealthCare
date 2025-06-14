@@ -1,0 +1,20 @@
+:root {
+    --color-text:#000000 ;
+    --color-primary: #576cbc ;
+    --color-secondary: #19376d ;
+    --color-dark: #02b447 ;
+    --color-bg: #ffffff ;
+
+    --font-roboto:"Roboto";
+    
+
+
+}
+[data-theme="dark"] {
+  --color-primary: #90caf9;
+  --color-secondary: #42a5f5;
+  --color-text: #fff;
+  --color-bg: #121212;
+  --navbar-bg: #1e1e1e;
+  --navbar-text: #ffffff;
+}
