@@ -1,57 +1,72 @@
-import React, { useState } from 'react';
+// src/components/UserProfile.jsx
+import React, { useEffect, useState } from 'react';
 import styles from './UserProfile.module.css';
+import api from '../../api'; // Axios instance with token in header
 
 const UserProfile = () => {
-  const [user, setUser] = useState({
-    name: "Tejashri Shirsath",
-    email: "tejashri@example.com",
-    phone: "+91 9876543210",
-    city: "Nashik, Maharashtra",
-    joined: "January 2024",
-    petsOwned: 3,
-    avatar: "https://i.pravatar.cc/150?img=32"
-  });
-
+  const [user, setUser] = useState(null);
   const [editMode, setEditMode] = useState(false);
-  const [formData, setFormData] = useState({ ...user });
+  const [formData, setFormData] = useState({});
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await api.get('/user/profile'); // ✅ Make sure route is protected
+        setUser(res.data);
+        setFormData(res.data);
+      } catch (err) {
+        console.error('Error fetching profile:', err);
+      }
+    };
+    fetchProfile();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setUser({ ...formData });
-    setEditMode(false);
-    alert("Profile updated successfully!");
+    try {
+      const res = await api.put('/user/profile', formData);
+      setUser(res.data); // Backend should return updated user
+      setEditMode(false);
+      alert('Profile updated successfully!');
+    } catch (err) {
+      console.error('Update failed:', err.response?.data || err.message);
+      alert('Error updating profile');
+    }
   };
+
+  if (!user) return <p>Loading profile...</p>;
 
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <img src={user.avatar} alt="User Avatar" className={styles.avatar} />
+        <img
+          src={user.avatar || 'https://i.pravatar.cc/150?img=32'}
+          alt="User Avatar"
+          className={styles.avatar}
+        />
         <h2 className={styles.name}>{user.name}</h2>
-        <p className={styles.subheading}>Pet Owner</p>
+        <p className={styles.subheading}>{user.role === 'vet' ? 'Veterinarian' : 'Pet Owner'}</p>
 
         {editMode ? (
           <form onSubmit={handleSubmit} className={styles.editForm}>
-            <label>
-              Name:
-              <input name="name" value={formData.name} onChange={handleChange} required />
-            </label>
-            <label>
-              Email:
-              <input name="email" value={formData.email} onChange={handleChange} required />
-            </label>
-            <label>
-              Phone:
-              <input name="phone" value={formData.phone} onChange={handleChange} required />
-            </label>
-            <label>
-              City:
-              <input name="city" value={formData.city} onChange={handleChange} required />
-            </label>
+            <label>Name:<input name="name" value={formData.name} onChange={handleChange} required /></label>
+            <label>Email:<input name="email" value={formData.email} onChange={handleChange} required /></label>
+            <label>Phone:<input name="phone" value={formData.phone || ''} onChange={handleChange} /></label>
+            <label>Location:<input name="location" value={formData.location || ''} onChange={handleChange} /></label>
+            <label>Avatar URL:<input name="avatar" value={formData.avatar || ''} onChange={handleChange} /></label>
+
+            {user.role === 'vet' && (
+              <>
+                <label>Specialization:<input name="specialization" value={formData.specialization || ''} onChange={handleChange} /></label>
+                <label>Clinic:<input name="clinic" value={formData.clinic || ''} onChange={handleChange} /></label>
+                <label>Experience:<input name="experience" value={formData.experience || ''} onChange={handleChange} /></label>
+              </>
+            )}
 
             <div className={styles.buttonGroup}>
               <button type="submit" className={styles.saveBtn}>Save</button>
@@ -61,10 +76,19 @@ const UserProfile = () => {
         ) : (
           <div className={styles.details}>
             <p><strong>Email:</strong> {user.email}</p>
-            <p><strong>Phone:</strong> {user.phone}</p>
-            <p><strong>City:</strong> {user.city}</p>
-            <p><strong>Pets Owned:</strong> {user.petsOwned}</p>
-            <p><strong>Joined:</strong> {user.joined}</p>
+            <p><strong>Phone:</strong> {user.phone || '—'}</p>
+            <p><strong>Location:</strong> {user.location || '—'}</p>
+            <p><strong>Joined:</strong> {user.createdAt ? new Date(user.createdAt).toLocaleDateString() : '—'}</p>
+             <p><strong>Role:</strong> {user.role}</p>
+
+            {user.role === 'vet' && (
+              <>
+                <p><strong>Specialization:</strong> {user.specialization || '—'}</p>
+                <p><strong>Clinic:</strong> {user.clinic || '—'}</p>
+                <p><strong>Experience:</strong> {user.experience || '—'}</p>
+              </>
+            )}
+
             <button className={styles.editBtn} onClick={() => setEditMode(true)}>Edit Profile</button>
           </div>
         )}

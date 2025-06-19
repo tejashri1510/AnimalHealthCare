@@ -5,12 +5,10 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import userRoutes from './routes/userRoutes.js';
-import vetRoutes from './routes/vetRoutes.js';
 import animalRoutes from './routes/animalRoutes.js';
 import symptomRoutes from './routes/symptomRoutes.js';
 import consultationRoutes from './routes/consultationRoutes.js';
 import authRoutes from './routes/authRoutes.js';
-
 dotenv.config();
 
 const app = express();
@@ -21,7 +19,6 @@ app.use(express.json());
 
 // API Routes
 app.use('/api/user', userRoutes);
-app.use('/api/vet', vetRoutes);
 app.use('/api/animals', animalRoutes);
 app.use('/api/symptoms', symptomRoutes);
 app.use('/api/consultation', consultationRoutes);

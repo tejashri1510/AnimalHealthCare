@@ -1,17 +1,24 @@
 import Consultation from '../models/consultationModel.js';
-
-// POST: User submits a question
 export const askQuestion = async (req, res) => {
-  const { question, userName } = req.body;
+  const { question } = req.body;
+
+  if (!question) {
+    return res.status(400).json({ error: 'Question is required' });
+  }
 
   try {
-    const newConsultation = new Consultation({ question, userName });
+    const newConsultation = new Consultation({
+      question,
+      user: req.user._id,
+    });
+
     await newConsultation.save();
     res.status(201).json(newConsultation);
   } catch (error) {
     res.status(500).json({ error: 'Failed to submit question' });
   }
 };
+
 
 // GET: All consultations (for vet to view and reply)
 export const getAllConsultations = async (req, res) => {

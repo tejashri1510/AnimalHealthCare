@@ -1,19 +1,19 @@
 import express from 'express';
 import Consultation from '../models/Consultation.js'; // ✅ Make sure this model file uses export default
+import { protect } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
-
-// POST: Ask a question
-router.post('/ask', async (req, res) => {
+// 🟢 User asks a question (needs to be logged in)
+router.post('/ask', protect, async (req, res) => {
   try {
-    const { userId, question } = req.body;
+    const { question } = req.body;
 
-    if (!userId || !question) {
-      return res.status(400).json({ error: 'Missing userId or question' });
+    if (!question) {
+      return res.status(400).json({ error: 'Question is required' });
     }
 
     const newConsultation = new Consultation({
-      userId,
+      user: req.user._id, // ✅ from token
       question,
       answer: '',
       createdAt: new Date(),
@@ -26,15 +26,17 @@ router.post('/ask', async (req, res) => {
   }
 });
 
-// GET: Get consultation replies by user ID
-router.get('/user/:userId', async (req, res) => {
+// 🔐 Get consultations for the logged-in user
+router.get('/user/:userId', protect, async (req, res) => {
   try {
-    const consultations = await Consultation.find({ userId: req.params.userId });
+    const consultations = await Consultation.find({ user: req.user._id });
     res.status(200).json(consultations);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
+
 // ✅ Vet fetches all consultations
 router.get('/vet/all', async (req, res) => {
   try {

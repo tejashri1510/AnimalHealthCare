@@ -1,12 +1,12 @@
-// src/vetPanel/Navbar.jsx
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default function VetNavbar() {
-  const navigate = useNavigate();
-
   const handleLogout = () => {
-    navigate('/login');
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('user');
+    window.location.href = 'http://localhost:5173/login'; // ⬅️ Redirect to userPanel login
   };
 
   return (
@@ -21,15 +21,11 @@ export default function VetNavbar() {
 
       <div className="collapse navbar-collapse" id="vetNav">
         <ul className="navbar-nav ms-auto">
-          {['Dashboard','Consultations','Profile'].map((txt) => {
+          {['Dashboard', 'Consultations', 'Profile'].map((txt) => {
             const route = txt.toLowerCase().replace(/\s+/g, '');
             return (
               <li className="nav-item" key={txt}>
-                <NavLink
-                  className="nav-link"
-                  to={`/vet/${route}`}
-                  id={`nav-${route}`} // ✅ Add unique ID
-                >
+                <NavLink className="nav-link" to={`/vet/${route}`} id={`nav-${route}`}>
                   {txt}
                 </NavLink>
               </li>
@@ -40,7 +36,7 @@ export default function VetNavbar() {
             <button
               className="btn btn-outline-light btn-sm ms-3"
               onClick={handleLogout}
-              id="nav-logout" // ✅ Logout button ID
+              id="nav-logout"
             >
               Logout
             </button>

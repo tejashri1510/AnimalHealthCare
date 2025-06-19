@@ -6,7 +6,7 @@ import api from '../../api'; // adjust path
 function Animals() {
   const navigate = useNavigate();
   const [animals, setAnimals] = useState([]);
-
+  
   useEffect(() => {
     api.get('/animals')
       .then(res => setAnimals(res.data))

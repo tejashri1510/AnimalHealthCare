@@ -4,20 +4,25 @@ import api from '../../api';
 
 const AskQuestion = ({ onSubmit }) => {
   const [question, setQuestion] = useState('');
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!question.trim()) return;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const userId = localStorage.getItem('userId');
-    if (!question.trim()) return;
+  const userId = localStorage.getItem('userId'); // ⬅️ fetch userId from localStorage
+  if (!userId) {
+    console.error('User not logged in');
+    return;
+  }
 
-    try {
-      await api.post('/consultation/ask', { userId, question });
-      setQuestion('');
-      onSubmit(); // refresh replies
-    } catch (error) {
-      console.error('Error submitting question:', error);
-    }
-  };
+  try {
+    await api.post('/consultation/ask', { userId, question }); // ✅ Send userId also
+    setQuestion('');
+    onSubmit(); // refresh replies
+  } catch (error) {
+    console.error('Error submitting question:', error);
+  }
+};
+
 
   return (
     <div className={styles.container}>

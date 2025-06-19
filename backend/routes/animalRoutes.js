@@ -1,12 +1,18 @@
 import express from 'express';
-import Animal from '../models/animalModel.js'; // ✅ make sure this file exists and uses ESM
+import Animal from '../models/animalModel.js';
+import { protect } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
-// POST: Add a new animal
-router.post('/', async (req, res) => {
+router.post('/', protect, async (req, res) => {
   try {
-    const animal = new Animal(req.body);
+    const { name, species, age } = req.body;
+    const animal = new Animal({
+      name,
+      species,
+      age,
+      user: req.user.id, // ✅ correct field
+    });
     await animal.save();
     res.status(201).json(animal);
   } catch (err) {
@@ -14,34 +20,35 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET: Get all animals
-router.get('/', async (req, res) => {
+router.get('/', protect, async (req, res) => {
   try {
-    const animals = await Animal.find();
+    const animals = await Animal.find({ user: req.user.id }); // ✅ secure by user
     res.json(animals);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// PUT: Update animal by ID
-router.put('/:id', async (req, res) => {
+router.put('/:id', protect, async (req, res) => {
   try {
-    const updatedAnimal = await Animal.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    if (!updatedAnimal) return res.status(404).json({ error: 'Animal not found' });
+    const animal = await Animal.findOne({ _id: req.params.id, user: req.user.id }); // ✅ correct
+    if (!animal) return res.status(404).json({ error: 'Animal not found or unauthorized' });
+
+    animal.name = req.body.name || animal.name;
+    animal.species = req.body.species || animal.species;
+    animal.age = req.body.age || animal.age;
+
+    const updatedAnimal = await animal.save();
     res.json(updatedAnimal);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 });
 
-// DELETE: Delete animal by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', protect, async (req, res) => {
   try {
-    const deletedAnimal = await Animal.findByIdAndDelete(req.params.id);
-    if (!deletedAnimal) return res.status(404).json({ error: 'Animal not found' });
+    const animal = await Animal.findOneAndDelete({ _id: req.params.id, user: req.user.id }); // ✅ correct
+    if (!animal) return res.status(404).json({ error: 'Animal not found or unauthorized' });
     res.json({ message: 'Animal deleted successfully' });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -49,4 +56,17 @@ router.delete('/:id', async (req, res) => {
 });
 
 
-export default router; // ✅ ESM compatible
+
+
+// ✅ DELETE: Delete only if it belongs to user
+router.delete('/:id', protect, async (req, res) => {
+  try {
+    const animal = await Animal.findOneAndDelete({ _id: req.params.id, userId: req.user.id }); // 👈 secure delete
+    if (!animal) return res.status(404).json({ error: 'Animal not found or unauthorized' });
+    res.json({ message: 'Animal deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+export default router;

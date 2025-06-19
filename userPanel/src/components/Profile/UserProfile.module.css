@@ -1,20 +1,20 @@
 .container {
-  padding: 2rem;
-  min-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 2rem;
+  background-color: #5a5a6e;
+  min-height: 100vh;
 }
 
 .card {
-  background-color: #fff;
-  color: #000;
-  width: 100%;
-  max-width: 500px;
-  padding: 2rem;
+  background: #fff;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  transition: all 0.3s ease;
 }
 
 .avatar {
@@ -22,77 +22,119 @@
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 1rem;
-  border: 4px solid #28a745;
+  margin: 0 auto 1rem;
+  display: block;
+  border: 4px solid #e0e0e0;
 }
 
 .name {
+  text-align: center;
   font-size: 1.8rem;
-  margin-bottom: 0.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.25rem;
 }
 
 .subheading {
+  text-align: center;
   font-size: 1rem;
-  color: #555;
+  color: #888;
   margin-bottom: 1.5rem;
-}
-
-.details {
-  text-align: left;
-  font-size: 1rem;
-  color: #333;
 }
 
 .details p {
   margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #444;
 }
+
+.editBtn {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.editBtn:hover {
+  background-color: #1d4ed8;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+}
+
 .editForm label {
-  display: block;
-  text-align: left;
-  margin-bottom: 1rem;
   font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  color: #333;
+  display: flex;
+  flex-direction: column;
 }
 
 .editForm input {
-  width: 100%;
   padding: 0.5rem;
-  margin-top: 0.3rem;
-  border-radius: 8px;
   border: 1px solid #ccc;
-  font-size: 1rem;
+  border-radius: 8px;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
 }
 
 .buttonGroup {
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
-.editBtn,
 .saveBtn,
 .cancelBtn {
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
+  flex: 1;
+  padding: 0.75rem;
   font-size: 1rem;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-.editBtn {
-  background-color: #007bff;
+.saveBtn {
+  background-color: #10b981;
   color: white;
-  border: none;
-  margin-top: 1rem;
-
 }
 
-.saveBtn {
-  background-color: #28a745;
-  color: white;
-  border: none;
+.saveBtn:hover {
+  background-color: #059669;
 }
 
 .cancelBtn {
-  background-color: #dc3545;
+  background-color: #ef4444;
   color: white;
-  border: none;
+}
+
+.cancelBtn:hover {
+  background-color: #dc2626;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 1.5rem;
+  }
+
+  .name {
+    font-size: 1.5rem;
+  }
+
+  .editForm label {
+    font-size: 0.9rem;
+  }
+
+  .editForm input {
+    font-size: 0.9rem;
+  }
 }

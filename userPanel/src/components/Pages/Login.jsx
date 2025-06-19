@@ -17,22 +17,21 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await api.post('http://localhost:5000/api/auth/login', form);
+      const res = await api.post('/auth/login', form);
+        console.log("Login Success ✅", res.data); 
       const { token, role, userId } = res.data;
 
       // Save login session
-      localStorage.setItem('token', token);
-      localStorage.setItem('role', role);
-      localStorage.setItem('userId', userId);
-
-      // Redirect by role
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('role', res.data.role);
+      localStorage.setItem('userId', res.data.userId);
+   
+ // Redirect by role
       if (role === 'user') {
         navigate('/animal'); // ✅ userPanel dashboard
       } else if (role === 'vet') {
-        window.location.href = 'http://localhost:5174'; // ✅ redirect to vetPanel app
-      } else {
-        alert('Unknown role. Contact admin.');
-      }
+  window.location.href = `http://localhost:5173/login?token=${token}&userId=${userId}&role=vet`;    
+      }   
     } catch (err) {
       console.error('Login error:', err);
       alert(err.response?.data?.message || 'Login failed. Please try again.');

@@ -53,7 +53,7 @@ const Consultations = () => {
               <p className={styles.timestamp}>
                 Asked on: {formatDate(c.createdAt || c.updatedAt || Date.now())}
               </p>
-              <p><strong>User ID:</strong> {c.userId}</p>
+              <p><strong>User ID:</strong> {c.user}</p>
               <p><strong>Question:</strong> {c.question}</p>
               {c.answer ? (
                 <div className={styles.reply}>

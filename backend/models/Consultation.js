@@ -1,25 +1,25 @@
 import mongoose from 'mongoose';
-
 const consultationSchema = new mongoose.Schema({
-  userId: {
-    type: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', // Required for .populate to work
     required: true,
   },
   question: {
+     type: String,
+      required: true,
+     },
+
+  answer: { 
     type: String,
-    required: true,
-  },
-  answer: {
-    type: String,
-    default: '',
-  },
-  createdAt: {
-    type: Date,
+     default: '' ,
+    },
+  
+
+  createdAt: { 
+    type: Date, 
     default: Date.now,
-  },
+   },
 });
 
-const Consultation = mongoose.model('Consultation', consultationSchema);
-
-// ✅ Use default export for ESM compatibility
-export default Consultation;
+export default mongoose.model('Consultation', consultationSchema);

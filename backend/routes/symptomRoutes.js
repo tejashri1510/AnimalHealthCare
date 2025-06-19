@@ -5,9 +5,9 @@ import {
   updateSymptom,
   deleteSymptom,
 } from '../controllers/symptomController.js';
-
+import { protect } from '../middlewares/authMiddleware.js';
 const router = express.Router();
-
+router.use(protect);
 // POST - Add new symptom
 router.post('/', addSymptom);
 
