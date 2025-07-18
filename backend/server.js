@@ -9,6 +9,8 @@ import animalRoutes from './routes/animalRoutes.js';
 import symptomRoutes from './routes/symptomRoutes.js';
 import consultationRoutes from './routes/consultationRoutes.js';
 import authRoutes from './routes/authRoutes.js';
+import mlRoutes from './routes/mlRoutes.js';
+
 dotenv.config();
 
 const app = express();
@@ -23,6 +25,7 @@ app.use('/api/animals', animalRoutes);
 app.use('/api/symptoms', symptomRoutes);
 app.use('/api/consultation', consultationRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/ml', mlRoutes);
 
 
 // MongoDB Connection
