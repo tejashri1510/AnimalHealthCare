@@ -77,10 +77,10 @@ Confidence score in predictions
 
 👩‍🔬 Maintained By
 Tejashri Shirsath
-Software Developer | ML Enthusiast | Final Year Project @ PraniSakha
+Software Developer | ML Enthusiast | Project @ PraniSakha
 
 ⭐ If you like this project, give it a star!
-📬 For any questions, reach out at [your-email@example.com]
+
 
 
 
