@@ -6,11 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const Dashboard = () => {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem('vetId');
-    localStorage.removeItem('token'); // remove token if used
-    navigate('/login'); // redirect to login page
-  };
+ 
 
   const cards = [
     {
@@ -27,13 +23,15 @@ const Dashboard = () => {
       route: '/vet/profile',
       action: () => navigate('/vet/profile'),
     },
-    {
-      title: 'Logout',
-      description: 'Securely logout and return to login',
-      icon: '/icons/logout.png',
-      route: '/login',
-      action: handleLogout,
-    },
+   {
+  title: 'Logout',
+  description: 'Securely logout and return to login',
+  icon: '/icons/logout.png',
+   action: () => {
+    localStorage.removeItem('token'); // or other clean-up
+    window.location.href = 'http://localhost:5173/login'; 
+   }
+},
   ];
 
   return (

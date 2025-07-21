@@ -1,8 +1,8 @@
-# 🐾 PraniSakha
+# PraniSakha 🐾
+A MERN Stack Project for Animal Health Management with integrated Machine Learning model.
 
-**PraniSakha** is a full-stack smart animal healthcare system designed to help pet owners manage their animals, symptoms, and connect with veterinary doctors for consultation. It also includes a machine learning-based disease prediction module.
-
----
-
-## 📁 Project Structure
-
+## Structure
+- `backend/` - Node.js Express server
+- `userPanel/` - React frontend for users
+- `vetPanel/` - React frontend for vets
+- `ml_model/` - Python ML scripts for disease prediction

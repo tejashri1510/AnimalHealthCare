@@ -28,9 +28,9 @@ const Login = () => {
    
  // Redirect by role
       if (role === 'user') {
-        navigate('/animal'); // ✅ userPanel dashboard
+        navigate('/animal'); //
       } else if (role === 'vet') {
-  window.location.href = `http://localhost:5173/login?token=${token}&userId=${userId}&role=vet`;    
+  window.location.href = `http://localhost:5174/vet/dashboard?token=${token}&userId=${userId}&role=vet`;    
       }   
     } catch (err) {
       console.error('Login error:', err);

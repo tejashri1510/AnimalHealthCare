@@ -12,6 +12,7 @@ const HomeSymptomPage = () => {
       <div className={styles.buttons}>
         <button onClick={() => navigate('/viewsymptom')} className={styles.btn}>🔍 View Symptoms</button>
         <button onClick={() => navigate('/addsymptom')} className={styles.btn}>➕ Add Symptom</button>
+         <button onClick={() => navigate('/predictdisease')} className={styles.btn}>🧠 Predict Disease</button>
       </div>
     </div>
   );

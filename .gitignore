@@ -1,7 +1,18 @@
-# Node and Python artifacts
+# Node and React
 **/node_modules/
 **/.env
 **/dist/
-**/.vite/
+**/build/
+
+# Python virtual environments
+ml_model/venv/
+
+# Python cache
 **/__pycache__/
-**/*.pyc
+**/.ipynb_checkpoints/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -17,6 +17,7 @@ import VetConsultationPage from './components/VetConsultation/VetConsultationPag
 import UserProfile from './components/Profile/UserProfile';
 import Register from './components/Pages/Register';
 import Login from './components/Pages/Login';
+import Prediction from './components/Symptoms/Prediction';
 
 import { Navigate } from 'react-router-dom';
 
@@ -43,6 +44,7 @@ const AppRoutes = () => {
         <Route path="/editsymptom/:id" element={<EditSymptoms />} />
         <Route path="/vetconsulthome" element={<VetConsultationPage />} />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/predictdisease" element={<Prediction />} />
       </Routes>
     </>
   );
