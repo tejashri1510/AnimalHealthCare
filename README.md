@@ -7,15 +7,12 @@ Welcome to the **Disease Prediction Model**, an intelligent machine learning-bas
 ml_model/
 └── disease_prediction_model/
 ├── model.py # Training script for the ML model
-├── predict.py # API / script for making predictions
-├── utils.py # Helper functions
+├── app.py # API / script for making predictions
 ├── disease_model.pkl # Trained ML model (serialized)
 ├── vectorizer.pkl # Symptom vectorizer (used during inference)
 ├── config.cfg # Configuration file (if used)
 ├── requirements.txt # Python dependencies
 
-markdown
-Copy code
 
 ## ⚙️ Features
 
@@ -32,9 +29,9 @@ Copy code
 python model.py
 2. Predict Disease using Symptoms:
 
-bash
-Copy code
-python predict.py --symptoms "loss of appetite, vomiting, fatigue"
+
+
+python app.py --symptoms "loss of appetite, vomiting, fatigue"
 OR use via API integration in your web app.
 
 💡 Technologies Used
@@ -49,14 +46,14 @@ Joblib for model serialization
 📦 Installation
 Create a virtual environment (optional but recommended):
 
-bash
-Copy code
+
+
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 Install dependencies:
 
-bash
-Copy code
+
+
 pip install -r requirements.txt
 📁 Files to Track in Git
 Make sure your .gitignore excludes the following:
@@ -85,12 +82,9 @@ Software Developer | ML Enthusiast | Final Year Project @ PraniSakha
 ⭐ If you like this project, give it a star!
 📬 For any questions, reach out at [your-email@example.com]
 
-yaml
-Copy code
 
----
 
-Let me know if you want a **badges section**, **Live Demo link**, or **GitHub Actions CI/CD integration** for a more advanced version.
+
 
 
 
