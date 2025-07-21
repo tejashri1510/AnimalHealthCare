@@ -17,6 +17,9 @@ precautions_dict = {
     'Cold': 'Keep warm and avoid dust',
     'Paw Injury': 'Keep area clean and use bandage'
 }
+@app.route('/')
+def home():
+    return '✅ ML Disease Predictor is Live! Use POST /predict'
 
 @app.route('/predict', methods=['POST'])
 def predict():
