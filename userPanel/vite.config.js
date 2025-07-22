@@ -7,7 +7,8 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 3000,
   },
-  base: '/',  
-    outDir: 'dist', 
+ preview: {
+    port: 4173,
   },
+}
 );
