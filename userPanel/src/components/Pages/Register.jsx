@@ -1,7 +1,7 @@
-// src/pages/Register.jsx
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../../api'; // Axios config
+import api from '../../api';
 import styles from "./Register.module.css";
 
 const Register = () => {
@@ -11,7 +11,7 @@ const Register = () => {
     name: '',
     email: '',
     password: '',
-    role: '', // default to 'user'
+    role: '', 
   });
 
   const handleChange = (e) => {
@@ -24,7 +24,7 @@ const Register = () => {
     try {
       await api.post('/auth/register', form);
       alert('Registration successful. Please login.');
-      navigate('/login'); // ✅ Redirect to login
+      navigate('/login'); 
     } catch (err) {
       console.error('Registration error:', err);
       alert('Registration failed.');
