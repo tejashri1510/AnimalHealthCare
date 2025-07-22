@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import api from '../../api';
 import styles from "./Register.module.css";
 
@@ -83,8 +84,7 @@ const Register = () => {
         </form>
 
         <p className={styles.switchText}>
-          Already have an account? <a href="/login">Login here</a>
-        </p>
+         Already have an account? <Link to="/login">Login here</Link>        </p>
       </div>
     </div>
   );
