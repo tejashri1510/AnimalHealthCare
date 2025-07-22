@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import styles from './NavBar.module.css';
+import styles from './Navbar.module.css';
 import { FaBars, FaTimes, FaUserCircle } from 'react-icons/fa';
 
 const Navbar = () => {
