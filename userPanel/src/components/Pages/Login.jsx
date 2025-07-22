@@ -20,19 +20,19 @@ const Login = () => {
     setLoading(true);
     try {
       const res = await api.post('/auth/login', form);
-      if (res.status === 200) {
-        console.log("Login Success ✅", res.data);
-        const { token, role, userId } = res.data;
+      console.log("Login Success ✅", res.data);
 
-        localStorage.setItem('token', token);
-        localStorage.setItem('role', role);
-        localStorage.setItem('userId', userId);
+      const { token, role, userId } = res.data;
 
-        if (role === 'user') {
-          navigate('/animal');
-        } else if (role === 'vet') {
-          window.location.href = `http://localhost:5174/vet/dashboard?token=${token}&userId=${userId}&role=vet`;
-        }
+      localStorage.setItem('token', token);
+      localStorage.setItem('role', role);
+      localStorage.setItem('userId', userId);
+
+      // ✅ Redirect based on role
+      if (role === 'user') {
+        navigate('/animal'); // This should work now
+      } else if (role === 'vet') {
+        window.location.href = `http://localhost:5174/vet/dashboard?token=${token}&userId=${userId}&role=vet`;
       }
     } catch (err) {
       console.error('Login error:', err);
