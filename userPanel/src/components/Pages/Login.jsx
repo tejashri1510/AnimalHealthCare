@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 
 import api from '../../api';
 import styles from './Login.module.css';
+
 const Login = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: '', password: '' });
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,19 +20,20 @@ const Login = () => {
     setLoading(true);
     try {
       const res = await api.post('/auth/login', form);
-        console.log("Login Success ✅", res.data); 
-      const { token, role, userId } = res.data;
+      if (res.status === 200) {
+        console.log("Login Success ✅", res.data);
+        const { token, role, userId } = res.data;
 
-      
-      localStorage.setItem('token', res.data.token);
-      localStorage.setItem('role', res.data.role);
-      localStorage.setItem('userId', res.data.userId);
-   
-      if (role === 'user') {
-  navigate('/animal');
-      } else if (role === 'vet') {
-  window.location.href = `http://localhost:5174/vet/dashboard?token=${token}&userId=${userId}&role=vet`;    
-      }   
+        localStorage.setItem('token', token);
+        localStorage.setItem('role', role);
+        localStorage.setItem('userId', userId);
+
+        if (role === 'user') {
+          navigate('/animal');
+        } else if (role === 'vet') {
+          window.location.href = `http://localhost:5174/vet/dashboard?token=${token}&userId=${userId}&role=vet`;
+        }
+      }
     } catch (err) {
       console.error('Login error:', err);
       alert(err.response?.data?.message || 'Login failed. Please try again.');
@@ -70,7 +72,8 @@ const Login = () => {
         </button>
 
         <p className={styles.switchText}>
-               Don't have an account? <Link to="/register">Register</Link>        </p>
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
       </form>
     </div>
   );
