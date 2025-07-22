@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await api.post(${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, form);
+      const res = await api.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, form);
       console.log("Login Success ✅", res.data);
 
       const { token, role, userId } = res.data;
