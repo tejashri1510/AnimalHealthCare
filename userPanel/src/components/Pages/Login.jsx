@@ -21,13 +21,13 @@ const Login = () => {
         console.log("Login Success ✅", res.data); 
       const { token, role, userId } = res.data;
 
-      // Save login session
+      
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('role', res.data.role);
       localStorage.setItem('userId', res.data.userId);
    
       if (role === 'user') {
-        navigate('/animal'); //
+        window.location.href = '/animal' 
       } else if (role === 'vet') {
   window.location.href = `http://localhost:5174/vet/dashboard?token=${token}&userId=${userId}&role=vet`;    
       }   
