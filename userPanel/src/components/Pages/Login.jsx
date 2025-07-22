@@ -1,12 +1,12 @@
-// src/pages/Login.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import api from '../../api';
 import styles from './Login.module.css';
 const Login = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: '', password: '' });
-  const [loading, setLoading] = useState(false); // Optional loading state
+  const [loading, setLoading] = useState(false); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,7 +26,6 @@ const Login = () => {
       localStorage.setItem('role', res.data.role);
       localStorage.setItem('userId', res.data.userId);
    
- // Redirect by role
       if (role === 'user') {
         navigate('/animal'); //
       } else if (role === 'vet') {
@@ -70,8 +69,7 @@ const Login = () => {
         </button>
 
         <p className={styles.switchText}>
-          Don't have an account? <a href="/register">Register</a>
-        </p>
+               Don't have an account? <Link to="/register">Register</Link>        </p>
       </form>
     </div>
   );
