@@ -7,8 +7,7 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 3000,
   },
-  base: '/',  // Ensure root base path for deployment
-  build: {
-    outDir: 'dist',  // default output folder
+  base: '/',  
+    outDir: 'dist', 
   },
-});
+);
