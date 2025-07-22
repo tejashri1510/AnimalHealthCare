@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
 import api from '../../api';
 import styles from './Login.module.css';
 const Login = () => {
@@ -27,7 +28,7 @@ const Login = () => {
       localStorage.setItem('userId', res.data.userId);
    
       if (role === 'user') {
-        window.location.href = '/animal' 
+  navigate('/animal');
       } else if (role === 'vet') {
   window.location.href = `http://localhost:5174/vet/dashboard?token=${token}&userId=${userId}&role=vet`;    
       }   
