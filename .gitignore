@@ -4,13 +4,18 @@
 **/dist/
 **/build/
 
-# Python virtual environments
-ml_model/venv/
-
-# Python cache
-**/__pycache__/
+# Do NOT block your actual model folder
+# (only use this if you ever make a REAL virtualenv)
+# ml_model/venv/  ← remove this or comment it
+# Ignore virtual environment folders
+**/Lib/
+**/Scripts/
+**/Include/
+**/*.exe
+**/*.dll
 **/.ipynb_checkpoints/
-
+**/__pycache__/
+**/*.pyc
 # OS/editor
 .DS_Store
 Thumbs.db

@@ -12,7 +12,7 @@ const Prediction = () => {
   useEffect(() => {
     const fetchSymptoms = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/symptoms', {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/symptoms`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -44,7 +44,7 @@ const Prediction = () => {
 
     try {
       const response = await axios.post(
-        'http://127.0.0.1:5001/predict',
+        `${import.meta.env.VITE_PREDICT_URL}/predict`,
         { symptoms: selectedSymptoms },
         {
           headers: {
