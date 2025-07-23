@@ -38,12 +38,12 @@
   margin-bottom: 1rem;
 }
 .card p {
-  color: #555; /* Dark grey for readability */
+  color: #555; 
   margin-top: 0.5rem;
   font-size: 0.95rem;
   line-height: 1.4;
-  min-height: 40px; /* Ensures space is reserved */
+  min-height: 40px; 
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: normal; /* Allow multiline */
+  white-space: normal; 
 }

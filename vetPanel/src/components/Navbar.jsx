@@ -6,7 +6,8 @@ export default function VetNavbar() {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('user');
-    window.location.href = 'http://localhost:5173/login'; // ⬅️ Redirect to userPanel login
+    window.location.href = `${import.meta.env.VITE_USERPANEL_URL}/login`;
+
   };
 
   return (

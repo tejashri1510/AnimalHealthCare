@@ -1,4 +1,3 @@
-// src/vetPanel/Dashboard.jsx
 import React from 'react';
 import styles from './Dashboard.module.css';
 import { useNavigate } from 'react-router-dom';
@@ -28,8 +27,8 @@ const Dashboard = () => {
   description: 'Securely logout and return to login',
   icon: '/icons/logout.png',
    action: () => {
-    localStorage.removeItem('token'); // or other clean-up
-    window.location.href = 'http://localhost:5173/login'; 
+    localStorage.removeItem('token'); 
+window.location.href = `${import.meta.env.VITE_USERPANEL_URL}/login`;
    }
 },
   ];

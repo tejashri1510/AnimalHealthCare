@@ -1,7 +1,6 @@
-// src/components/UserProfile.jsx
 import React, { useEffect, useState } from 'react';
 import styles from './Profile.module.css';
-import api from '../api'; // Axios instance with token in header
+import api from '../api'; 
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -11,7 +10,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await api.get('/user/profile'); // ✅ Make sure route is protected
+        const res = await api.get('/user/profile');
         setUser(res.data);
         setFormData(res.data);
       } catch (err) {
@@ -30,7 +29,7 @@ const Profile = () => {
     e.preventDefault();
     try {
       const res = await api.put('/user/profile', formData);
-      setUser(res.data); // Backend should return updated user
+      setUser(res.data);
       setEditMode(false);
       alert('Profile updated successfully!');
     } catch (err) {

@@ -1,8 +1,8 @@
 .container {
   padding: 2rem;
-  background-color: #4a4b4d; /* light gray background */
+  background-color: #4a4b4d; 
   min-height: 100vh;
-  color: #000; /* black text */
+  color: #000; 
 }
 
 .title {
