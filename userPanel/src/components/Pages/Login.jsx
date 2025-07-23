@@ -32,7 +32,7 @@ const Login = () => {
       if (role === 'user') {
         navigate('/animal'); // This should work now
       } else if (role === 'vet') {
-        window.location.href = `http://localhost:5174/vet/dashboard?token=${token}&userId=${userId}&role=vet`;
+        window.location.href = `https://animalhealthcare-vetpanel.onrender.com?token=${token}&userId=${userId}&role=vet`;
       }
     } catch (err) {
       console.error('Login error:', err);
