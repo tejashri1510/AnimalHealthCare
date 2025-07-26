@@ -37,7 +37,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/vet/dashboard" element={<Dashboard />} />
         <Route path="/vet/consultations" element={<Consultations />} />
         <Route path="/vet/profile" element={<Profile />} />
-        <Route path="*" element={<h2 className="text-center mt-5">404 - Page Not Found</h2>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

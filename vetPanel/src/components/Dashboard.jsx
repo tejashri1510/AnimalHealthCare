@@ -28,7 +28,7 @@ const Dashboard = () => {
   icon: '/icons/logout.png',
    action: () => {
     localStorage.removeItem('token'); 
-window.location.href = `${import.meta.env.VITE_USERPANEL_URL}/login`;
+     window.location.href = 'https://animal-health-care-uelr-gzflg7n2y-tejashris-projects-1ebad140.vercel.app/login' ;
    }
 },
   ];

@@ -6,7 +6,7 @@ export default function VetNavbar() {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('user');
-    window.location.href = `${import.meta.env.VITE_USERPANEL_URL}/login`;
+    window.location.href = 'https://animal-health-care-uelr-gzflg7n2y-tejashris-projects-1ebad140.vercel.app/login';
 
   };
 
